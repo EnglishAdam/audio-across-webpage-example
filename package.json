@@ -4,8 +4,7 @@
   "description": "Example demonstrating a simple technique to maintain playing audio across multiple webpages",
   "main": "server.js",
   "scripts": {
-    "run": "node server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "run": "node server.js"
   },
   "repository": {
     "type": "git",
