@@ -1,0 +1,5 @@
+My favorite template engine is <%= it.favorite %> because it is: <%= it.reasons.join(', ') %>
+<p>test paragraph</p>
+<p>test paragraph</p>
+
+<%~ includeFile('./footer', it) %>
