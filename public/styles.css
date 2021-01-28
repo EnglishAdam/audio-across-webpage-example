@@ -1,0 +1,31 @@
+h1 {
+  font-size:2em; /* 32px */
+  padding:0.25em 0.5em; /* 8px 16px */
+}
+
+h1 small {
+  font-size:0.625em; /* 20px aka 1.25REM */
+}
+
+#mainMenu {
+  font-size:1.25em; /* 20px */
+  padding:0.4em 0.8em; /* 8px 16px */
+}
+
+.red {
+  background-color: red;
+}
+
+.blue {
+  background-color: blue;
+}
+
+.green {
+  background-color: green;
+}
+
+/* WebVTT Styling */
+::cue {
+  color:#fff;
+  background:#0095dd;
+}

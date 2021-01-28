@@ -1,0 +1,9 @@
+<% layout('./_layouts/default') %>
+
+<%~ includeFile('./_components/header', it) %>
+
+<p class="green">Color</p>
+
+<%~ includeFile('./_components/audio', it) %>
+
+<%~ includeFile('./_components/footer', it) %>

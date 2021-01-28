@@ -1,0 +1,10 @@
+<header id="top">
+  <h1>Test Title<br><small>tagline</small></h1>
+  <nav id="mainMenu">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/contact">Contact</a></li>
+    </ul>
+  <!-- #mainMenu --></nav>
+<!-- #top --></header>
