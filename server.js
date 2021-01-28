@@ -27,17 +27,10 @@ const schema = {
 const options = {
   confKey: 'config', // optional, default: 'config'
   schema: schema,
-  dotenv: true
+  // dotenv: true
 }
 
-fastify
-  .register(fastifyEnv, options)
-  .ready((err) => {
-    if (err) console.error(err)
-
-    console.log(fastify.config) // or fastify[options.confKey]
-    // output: { PORT: 3000 }
-  })
+fastify.register(fastifyEnv, options)
 
 /**
  * Register Static Folder
@@ -60,8 +53,6 @@ fastify.register(require('point-of-view'), {
 fastify.get('/', (req, reply) => reply.view('/views/index.eta'))
 fastify.get('/about', (req, reply) => reply.view('/views/about.eta'))
 fastify.get('/contact', (req, reply) => reply.view('/views/contact.eta'))
-
-
 fastify.route({
   method: 'GET',
   url: '/test',
@@ -85,16 +76,23 @@ fastify.route({
     // E.g. check authentication
   },
   handler: async (request, reply) => {
-    return { hello: process.env.NODE_ENV }
+    return { hello: fastify.config.NODE_ENV }
   }
 })
 
+
+/**
+ * Start Server When Ready
+ */
 const start = async () => {
   try {
-    await fastify.listen(process.env.PORT)
+    await fastify.listen(fastify.config.PORT)
   } catch (err) {
     fastify.log.error(err)
     process.exit(1)
   }
 }
-start()
+fastify.ready((err) => {
+  if (err) console.error(err)
+  start()
+})
