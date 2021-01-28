@@ -1,5 +1,6 @@
 const fastify = require('fastify')({ logger: true })
 const fastifyEnv = require('fastify-env')
+const path = require('path')
 const Eta = require("eta")
 
 /**
@@ -39,6 +40,14 @@ fastify
   })
 
 /**
+ * Register Static Folder
+ */
+fastify.register(require('fastify-static'), {
+  root: path.join(__dirname, 'public'),
+  prefix: '/public/', // optional: default '/'
+})
+
+/**
  * Register Templater
  */
 fastify.register(require('point-of-view'), {
@@ -48,18 +57,14 @@ fastify.register(require('point-of-view'), {
 /**
  * Routes
  */
-fastify.get('/test', (req, reply) => {
-  reply.view('/views/template.eta', {
-    favorite: "Eta",
-    name: "Ben",
-    reasons: ["fast", "lightweight", "simple"]
-  })
-})
+fastify.get('/', (req, reply) => reply.view('/views/index.eta'))
+fastify.get('/about', (req, reply) => reply.view('/views/about.eta'))
+fastify.get('/contact', (req, reply) => reply.view('/views/contact.eta'))
 
 
 fastify.route({
   method: 'GET',
-  url: '/',
+  url: '/test',
   schema: {
     // request needs to have a querystring with a `name` parameter
     querystring: {

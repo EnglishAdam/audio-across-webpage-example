@@ -28,6 +28,7 @@
     "eta": "^1.12.1",
     "fastify": "^3.11.0",
     "fastify-env": "^2.1.0",
+    "fastify-static": "^3.4.0",
     "point-of-view": "^4.9.0"
   }
 }
