@@ -27,7 +27,7 @@ const schema = {
 const options = {
   confKey: 'config', // optional, default: 'config'
   schema: schema,
-  // dotenv: true
+  dotenv: process.env.NODE_ENV !== 'production'
 }
 
 fastify.register(fastifyEnv, options)
@@ -86,7 +86,7 @@ fastify.route({
  */
 const start = async () => {
   try {
-    await fastify.listen(fastify.config.PORT)
+    await fastify.listen(process.env.PORT || fastify.config.PORT, '0.0.0.0')
   } catch (err) {
     fastify.log.error(err)
     process.exit(1)
